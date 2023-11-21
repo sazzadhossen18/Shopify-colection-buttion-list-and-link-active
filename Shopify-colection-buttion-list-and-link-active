@@ -1,0 +1,91 @@
+<nav>
+  
+<ul class="eg-collection-menu navigation">
+   
+     {% for block in section.blocks %}
+        <li class="">
+            <a href="{{ block.settings.link_btn }}" class="">
+             {{ block.settings.text }}
+            </a>
+        </li>
+      {% endfor %}
+</ul>
+</nav>
+<script>
+  const activePage = window.location.pathname;
+const navLinks = document.querySelectorAll('nav a').forEach(link => {
+  if(link.href.includes(`${activePage}`)){
+    link.classList.add('active');
+    console.log(link);
+  }
+})
+</script>
+
+<style>
+
+.eg-collection-menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 1.25rem 0 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+        margin-bottom: 30px;
+}
+
+.eg-collection-menu li {
+    flex-shrink: 0;
+}
+
+.eg-collection-menu li a {
+    display: inline-block;
+    padding: .4rem 1rem;
+    margin: .25rem;
+    border: 1px solid #023347;
+    transition: all .2s ease-out;
+    border-radius: 50rem;
+}
+
+
+.eg-collection-menu li a.active {
+    background-color: #023347;
+    color: #fff;
+}
+  
+    .text-link, a {
+    color: #023347;
+    color: var(--colorTextBody);
+    text-decoration: none;
+    background: transparent;
+}
+@media (max-width: 768px) { 
+  .eg-collection-menu {
+    flex-wrap: nowrap;
+    overflow: auto;
+    padding: .3rem 1.5rem 1.5rem;
+    margin: 0 -1rem;
+    justify-content: flex-start;
+}
+}
+</style>
+
+
+
+   "blocks": [
+     {
+       "name": "Button List",
+       "type": "Button",
+       "settings": [
+         {
+           "type": "text",
+           "id": "text",
+           "label": "Button Label"
+         },
+          {
+           "type": "url",
+           "id": "link_btn",
+           "label": "Button Link"
+         }
+       ]
+     }
+   ]
